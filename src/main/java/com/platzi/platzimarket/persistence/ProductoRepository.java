@@ -3,6 +3,7 @@ package com.platzi.platzimarket.persistence;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.platzi.platzimarket.domain.Product;
@@ -13,7 +14,10 @@ import com.platzi.platzimarket.persistence.mapper.ProductMapper;
 
 @Repository
 public class ProductoRepository implements ProductRepository {
+
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
+    @Autowired
     private ProductMapper mapper;
 
     @Override
