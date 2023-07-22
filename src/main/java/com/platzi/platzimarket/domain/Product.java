@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class Product {
     
-    private int ProductId;
+    private int productId;
     private String name;
     private int categoryId;
     private double price;
-    private int sotck;
+    private int stock;
     private boolean active;
     private Category category;
 }

@@ -7,15 +7,13 @@ import lombok.Data;
 @Table(name = "productos")
 @Data
 public class Producto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-
     private Integer idProducto;
 
     private String nombre;
-
 
     @Column(name = "id_categoria")
     private Integer idCategoria;
@@ -32,7 +30,7 @@ public class Producto {
     private Boolean estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_categoria, isertable = false, updatable = false")
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
-    
+
 }
