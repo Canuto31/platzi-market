@@ -53,16 +53,7 @@ public class ProductMapper {
         List<Product> products = new ArrayList<>();
 
         for (Producto producto : productos) {
-            Product product = new Product();
-
-            product.setProductId(producto.getIdProducto());
-            product.setName(producto.getNombre());
-            product.setPrice(producto.getPrecioVenta());
-            product.setStock(producto.getCantidadStock());
-            product.setActive(producto.getEstado());
-            product.setCategory(categoryMapper.toCategory(producto.getCategoria()));
-
-            products.add(product);
+            products.add(toProduct(producto));
         }
 
         return products;
@@ -74,11 +65,11 @@ public class ProductMapper {
 
         producto.setIdCategoria(product.getCategoryId());
         producto.setNombre(product.getName());
-        producto.setIdCategoria(product.getCategoryId());
         producto.setCodigoBarras(null);
         producto.setPrecioVenta(product.getPrice());
         producto.setCantidadStock(product.getStock());
         producto.setEstado(product.isActive());
+        // producto.setCategoria(categoryMapper.toCategoria(product.getCategory()));
 
         return producto;
 

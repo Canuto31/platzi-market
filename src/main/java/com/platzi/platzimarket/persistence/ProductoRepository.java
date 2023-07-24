@@ -50,6 +50,9 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Product save(Product product) {
+        System.out.println("/////////////////////////////");
+        System.out.println(product);
+        System.out.println("/////////////////////////////");
         Producto producto = mapper.toProducto(product);
         return mapper.toProduct(productoCrudRepository.save(producto));
     }

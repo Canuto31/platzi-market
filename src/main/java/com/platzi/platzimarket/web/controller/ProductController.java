@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,15 +32,18 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
-    public Optional<List<Product>> getByCategory(int categoryId) {
+    @GetMapping("/category/{id}")
+    public Optional<List<Product>> getByCategory(@PathVariable("id") int categoryId) {
         return productService.getByCategory(categoryId);
     }
 
-    public Product save(Product product) {
+    @PostMapping()
+    public Product save(@RequestBody Product product) {
         return productService.save(product);
     }
 
-    public boolean delete(int productId) {
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int productId) {
         return productService.delete(productId);
     }
 }
