@@ -9,11 +9,8 @@ import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Component;
 
 import com.platzi.platzimarket.domain.Category;
-import com.platzi.platzimarket.domain.Product;
 import com.platzi.platzimarket.persistence.entity.Categoria;
-import com.platzi.platzimarket.persistence.entity.Producto;
 
-// @Mapper(componentModel = "spring")
 @Component
 public class CategoryMapper {
 
@@ -33,22 +30,23 @@ public class CategoryMapper {
         });
     }
 
-    public Category toCategoryt(Categoria categoria) {
-        return modelMapper.map(categoria, Category.class);
+    public Category toCategory(Categoria categoria) {
+        Category category = new Category();
+        category.setCategoryId(categoria.getIdCategoria());
+        category.setCategory(categoria.getDescripcion());
+        category.setActive(categoria.getEstado());
+
+        return category;
+        // return modelMapper.map(categoria, Category.class);
     }
 
     public Categoria toCategoria(Category category) {
-        return modelMapper.map(category, Categoria.class);
-    }
-    
-    /* @Mappings({
-        @Mapping(source = "idCategoria", target = "categoryId"),
-        @Mapping(source = "descripcion", target = "category"),
-        @Mapping(source = "estado", target = "active"),
-    })
-    Category toCategory(Categoria categoria);
+        Categoria categoria = new Categoria();
+        categoria.setIdCategoria(category.getCategoryId());
+        categoria.setDescripcion(category.getCategory());
+        categoria.setEstado(category.isActive());
 
-    @InheritInverseConfiguration
-    @Mapping(target = "productos", ignore = true)
-    Categoria toCategoria(Category category); */
+        return categoria;
+        // return modelMapper.map(category, Categoria.class);
+    }
 }
